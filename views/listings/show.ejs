@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayHub</title>
+</head>
+<body>
+    <h3>Listing Details : </h3>
+    <ul>
+        <li><%= listingById.title %></li>
+        <li><%= listingById.description %></li>
+        <li><%= listingById.image.url %></li>
+        <img src="<%= listingById.image.url %>">
+        <li>&#8377 <%= listingById.price.toLocaleString('en-IN') %></li>
+        <li><%= listingById.location %></li>
+        <li><%= listingById.country %></li>
+    </ul>
+    <a href="/listings/<%= listingById._id %>/edit">Edit Listing.</a>
+
+    <form action="/listings/<%= listingById._id %>?_method=DELETE" method = "POST">
+        <button>Delete Listing</button>
+    </form>
+    
+</body>
+</html>
