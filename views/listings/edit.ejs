@@ -1,19 +1,54 @@
 <% layout("layouts/boilerplate") %>
 <body>
-    <h3>Edit Your Listing</h3>
-    <form action="/listings/<%= oldListing._id %>?_method=PUT" method = "POST">
-        <input type="text" name = "title" value = "<%= oldListing.title %>">
-        <br><br>
-        <textarea type="text" name = "description" value = "<%= oldListing.description %>"></textarea>
-        <br><br>
-        <input type="number" name = "price" value = "<%= oldListing.price %>">
-        <br><br>
-        <input type="text" name = "image" value = "<%= oldListing.image.url %>" >
-        <br><br>
-        <input type="text" name = "location" value = "<%= oldListing.location %>">
-        <br><br>
-        <input type="text" name = "country" value = "<%= oldListing.country %>">
-        <br><br>
-        <button>Add</button>
-    </form>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+
+                <div class="card shadow-sm border-0 p-4">
+                    <h3 class="mb-4 text-center">Edit your Listing</h3>
+
+                    <form action="/listings/<%= oldListing._id %>?_method=PUT" method="POST">
+
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        <input type="text" name="title" class="form-control" value = "<%= oldListing.title %>" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea name="description" class="form-control" value = "<%= oldListing.description %>" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Image URL</label>
+                        <input type="text" name="image[url]" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="number" name="price" class="form-control" value = "<%= oldListing.price %>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Location</label>
+                        <input type="text" name="location" class="form-control" value = "<%= oldListing.location %>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Country</label>
+                        <input type="text" name="country" class="form-control" value = "<%= oldListing.country %>">
+                    </div>
+
+                    <button class="btn btn-primary w-100 mt-3">
+                        Submit
+                    </button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </body>

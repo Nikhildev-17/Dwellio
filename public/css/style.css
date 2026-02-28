@@ -150,3 +150,13 @@ footer {
     color: #FF385C;
     font-weight: 600;
 }
+
+/* Form Button Branding */
+.btn-primary {
+    background-color: #FF385C;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #e03150;
+}
