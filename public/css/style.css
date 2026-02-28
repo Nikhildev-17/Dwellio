@@ -78,3 +78,59 @@ footer {
 .divider {
     color: #bbb;
 }
+
+.card-link-wrapper{
+    text-decoration: none;
+}
+
+.listing-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    cursor: pointer;
+}
+
+.listing-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+
+.listing-img {
+    height: 230px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.listing-card:hover .listing-img {
+    transform: scale(1.05);
+}
+
+
+.card-body {
+    padding: 1rem 1.2rem;
+}
+
+
+.card-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+
+.card-price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #FF385C;
+}
+
+.night-text {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #666;
+}
+
