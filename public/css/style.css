@@ -134,3 +134,19 @@ footer {
     color: #666;
 }
 
+/* ===== SHOW PAGE ===== */
+
+.show-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.show-img {
+    height: 420px;
+    object-fit: cover;
+}
+
+.price-highlight {
+    color: #FF385C;
+    font-weight: 600;
+}

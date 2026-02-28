@@ -1,19 +1,66 @@
 <% layout("layouts/boilerplate") %>
 <body>
     <h3>Listing Details : </h3>
-    <ul>
-        <li><%= listingById.title %></li>
-        <li><%= listingById.description %></li>
-        <li><%= listingById.image.url %></li>
-        <img src="<%= listingById.image.url %>">
-        <li>&#8377 <%= listingById.price.toLocaleString('en-IN') %></li>
-        <li><%= listingById.location %></li>
-        <li><%= listingById.country %></li>
-    </ul>
-    <a href="/listings/<%= listingById._id %>/edit">Edit Listing.</a>
 
-    <form action="/listings/<%= listingById._id %>?_method=DELETE" method = "POST">
-        <button>Delete Listing</button>
-    </form>
-    
+    <div class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <!-- Image -->
+            <div class="card show-card shadow-sm border-0">
+                <img src="<%= listingById.image.url %>" 
+                     class="card-img-top show-img" 
+                     alt="listing image">
+
+                <div class="card-body">
+
+                    <!-- Title -->
+                    <h2 class="fw-bold mb-2">
+                        <%= listingById.title %>
+                    </h2>
+
+                    <!-- Location -->
+                    <p class="text-muted">
+                        <i class="fa-solid fa-location-dot me-1"></i>
+                        <%= listingById.location %>, 
+                        <%= listingById.country %>
+                    </p>
+
+                    <!-- Price -->
+                    <h4 class="price-highlight">
+                        &#8377; <%= listingById.price.toLocaleString('en-IN') %> 
+                        <span class="text-muted fs-6">/ night</span>
+                    </h4>
+
+                    <hr>
+
+                    <!-- Description -->
+                    <p class="mt-3">
+                        <%= listingById.description %>
+                    </p>
+
+                    <!-- Buttons -->
+                    <div class="mt-4 d-flex gap-3">
+                        <a href="/listings/<%= listingById._id %>/edit" 
+                           class="btn btn-outline-dark">
+                           Edit
+                        </a>
+
+                        <form action="/listings/<%= listingById._id %>?_method=DELETE" 
+                              method="POST">
+                            <button class="btn btn-danger">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
 </body>
