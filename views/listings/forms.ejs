@@ -8,7 +8,7 @@
             <div class="card shadow-sm border-0 p-4">
                 <h3 class="mb-4 text-center">Add New Listing</h3>
 
-                <form action="/listings" method="POST">
+                <form action="/listings" method="POST" novalidate class = "needs-validation">
 
                 <div class="mb-3">
                     <label class="form-label">Title</label>
@@ -17,27 +17,27 @@
 
                 <div class="mb-3">
                     <label class="form-label">Description</label>
-                    <textarea name="description" class="form-control" rows="3"></textarea>
+                    <textarea name="description" class="form-control" rows="3" required></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Image URL</label>
-                    <input type="text" name="image[url]" class="form-control">
+                    <input type="text" name="image[url]" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Price</label>
-                    <input type="number" name="price" class="form-control">
+                    <input type="number" name="price" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Location</label>
-                    <input type="text" name="location" class="form-control">
+                    <input type="text" name="location" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Country</label>
-                    <input type="text" name="country" class="form-control">
+                    <input type="text" name="country" class="form-control" required>
                 </div>
 
                 <button class="btn btn-primary w-100 mt-3">

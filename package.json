@@ -1,7 +1,7 @@
 {
   "name": "major-project-1",
   "version": "1.0.0",
-  "description": "",
+  "description": "A full-stack rental marketplace built with Node.js, Express, MongoDB, and EJS following MVC architecture and RESTful routing principles.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,6 +15,15 @@
     "ejs-mate": "^4.0.0",
     "express": "^5.2.1",
     "method-override": "^3.0.0",
-    "mongoose": "^9.2.1"
-  }
+    "mongoose": "^9.2.1",
+    "nodemon": "^3.1.14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nikhildev-17/StayHub.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nikhildev-17/StayHub/issues"
+  },
+  "homepage": "https://github.com/Nikhildev-17/StayHub#readme"
 }
