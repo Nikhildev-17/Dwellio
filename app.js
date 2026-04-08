@@ -6,6 +6,7 @@ const Listing = require("./models/listing.js");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const main = require("./config/dataBaseConfig.js");
+const wrapAsync = require("./utils/wrapAsync.js");
 main();
 
 app.set("view engine", "ejs");
@@ -36,12 +37,12 @@ app.get("/listings/:id", async (req, res) => {
     res.render("listings/show", {listingById});
 });
 
-app.post("/listings", async (req, res) => {
+app.post("/listings",  wrapAsync(async (req, res) => {
     let newListing = req.body;
     let addNewListing = new Listing(newListing);
     await addNewListing.save();
     res.redirect("/listings");
-})
+}));
 
 app.get("/listings/:id/edit", async (req, res) => {
     let {id} = req.params;

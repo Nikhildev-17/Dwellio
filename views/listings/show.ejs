@@ -29,7 +29,7 @@
 
                     <!-- Price -->
                     <h4 class="price-highlight">
-                        &#8377; <%= listingById.price.toLocaleString('en-IN') %> 
+                        &#8377; <%= listingById.price ? listingById.price.toLocaleString('en-IN') : "N/A" %>
                         <span class="text-muted fs-6">/ night</span>
                     </h4>
 
