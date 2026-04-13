@@ -8,6 +8,7 @@ const ejsMate = require("ejs-mate");
 const main = require("./config/dataBaseConfig.js");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
+const { listingsSchema } = require("./schema.js");
 main();
 
 app.set("view engine", "ejs");
@@ -16,6 +17,16 @@ app.use(express.urlencoded({extended : true}));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
+
+const validateListing = (req, res, next) => {
+    let { error } = listingsSchema.validate(req.body);
+    if(error){
+        let errMsg = error.details.map((el) => el.message).join(",");
+        throw new ExpressError(400, errMsg);
+    }else{
+        next();
+    }
+}
 
 app.get("/", (req, res) => {
     res.send("Working");
@@ -38,10 +49,9 @@ app.get("/listings/:id", wrapAsync(async (req, res) => {
     res.render("listings/show", {listingById});
 }));
 
-app.post("/listings",  wrapAsync(async (req, res) => {
-    if(!req.body.listing){
-        throw new ExpressError(400, "Bad Request!");
-    }
+app.post("/listings", validateListing, wrapAsync(async (req, res) => {
+
+
     let newListing = req.body;
     let addNewListing = new Listing(newListing);
     await addNewListing.save();
@@ -54,7 +64,7 @@ app.get("/listings/:id/edit", wrapAsync(async (req, res) => {
     res.render("listings/edit.ejs", {oldListing});
 }));
 
-app.put("/listings/:id", wrapAsync(async (req, res) => {
+app.put("/listings/:id", validateListing, wrapAsync(async (req, res) => {
     let {id} = req.params;
     await Listing.findByIdAndUpdate(id, req.body);
     res.redirect(`/listings/${id}`);
