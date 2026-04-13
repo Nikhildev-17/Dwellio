@@ -75,7 +75,7 @@ app.use((err, req, res, next) => {
         err = new ExpressError(400, "Invalid Id");
     }
     let {status = 500, message = "Something went wrong!"} = err;
-    res.status(status).send(message);
+    res.status(status).render("error.ejs", {err});
 })
 
 app.listen(3000, () => {
