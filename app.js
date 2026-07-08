@@ -1,5 +1,8 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 const path = require("path");
 const Listing = require("./models/listing.js");
@@ -35,6 +38,8 @@ app.get("/", (req, res) => {
 app.get("/listings", wrapAsync(async (req, res) => {
 
     const allListings = await Listing.find({});
+   
+    
     res.render("listings/index", {allListings});
 
 }));
@@ -88,6 +93,6 @@ app.use((err, req, res, next) => {
     res.status(status).render("error.ejs", {err});
 })
 
-app.listen(3000, () => {
-    console.log("Server running on port : 3000");
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
