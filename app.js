@@ -80,7 +80,7 @@ app.get("/listings", wrapAsync(async (req, res) => {
 
 }));
 
-app.get("/listings/new", isLoggedIn, isOwner, (req, res) => {
+app.get("/listings/new", isLoggedIn, (req, res) => {
     res.render("listings/forms.ejs");
 });
 
