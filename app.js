@@ -90,7 +90,7 @@ app.get("/listings/:id", wrapAsync(async (req, res) => {
     res.render("listings/show", {listingById});
 }));
 
-app.post("/listings", isLoggedIn, isOwner, validateListing, wrapAsync(async (req, res) => {
+app.post("/listings", isLoggedIn, validateListing, wrapAsync(async (req, res) => {
 
 
     let newListing = req.body;
