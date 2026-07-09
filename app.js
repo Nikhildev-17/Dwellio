@@ -92,12 +92,14 @@ app.get("/listings/:id", wrapAsync(async (req, res) => {
 
 app.post("/listings", isLoggedIn, validateListing, wrapAsync(async (req, res) => {
 
+    let addNewListing = new Listing(req.body.listing);
 
-    let newListing = req.body;
-    let addNewListing = new Listing(newListing);
     addNewListing.owner = req.user._id;
+
     await addNewListing.save();
+
     res.redirect("/listings");
+
 }));
 
 app.get("/listings/:id/edit", isLoggedIn, isOwner, wrapAsync(async (req, res) => {
@@ -107,8 +109,8 @@ app.get("/listings/:id/edit", isLoggedIn, isOwner, wrapAsync(async (req, res) =>
 }));
 
 app.put("/listings/:id", isLoggedIn, isOwner, validateListing, wrapAsync(async (req, res) => {
-    let {id} = req.params;
-    await Listing.findByIdAndUpdate(id, req.body);
+    let { id } = req.params;
+    await Listing.findByIdAndUpdate(id, req.body.listing);
     res.redirect(`/listings/${id}`);
 }));
 

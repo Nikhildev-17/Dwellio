@@ -1,59 +1,126 @@
 <% layout("layouts/boilerplate") %>
-<body>
 
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
 
             <div class="card shadow-sm border-0 p-4">
-                <h3 class="mb-4 text-center">Add New Listing</h3>
 
-                <form action="/listings" method="POST" novalidate class = "needs-validation">
+                <h3 class="mb-4 text-center">
+                    Add New Listing
+                </h3>
 
-                <div class="mb-3">
-                    <label class="form-label">Title</label>
-                    <input type="text" name="title" class="form-control" required>
-                    <div class="valid-feedback">Title looks good!</div>
-                    <div class="invalid-feedback">Please Select another title!</div>
-                </div>
+                <form
+                    action="/listings"
+                    method="POST"
+                    novalidate
+                    class="needs-validation">
 
-                <div class="mb-3">
-                    <label class="form-label">Description</label>
-                    <textarea name="description" class="form-control" rows="3" required></textarea>
-                    <div class="invalid-feedback">Please give some appropriate decsription!</div>
-                </div>
+                    <!-- Title -->
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
 
-                <div class="mb-3">
-                    <label class="form-label">Image URL</label>
-                    <input type="text" name="image[url]" class="form-control">
-                </div>
+                        <input
+                            type="text"
+                            name="listing[title]"
+                            class="form-control"
+                            required>
 
-                <div class="mb-3">
-                    <label class="form-label">Price</label>
-                    <input type="number" name="price" class="form-control" required>
-                    <div class="invalid-feedback">Please Enter a Valid Price</div>
-                </div>
+                        <div class="valid-feedback">
+                            Title looks good!
+                        </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Location</label>
-                    <input type="text" name="location" class="form-control" required>
-                    <div class="invalid-feedback">Please Enter a valid location</div>
-                </div>
+                        <div class="invalid-feedback">
+                            Please enter a title.
+                        </div>
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Country</label>
-                    <input type="text" name="country" class="form-control" required>
-                    <div class="invalid-feedback">Please Enter a Valid Country</div>
-                </div>
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
 
-                <button class="btn btn-primary w-100 mt-3">
-                    Submit
-                </button>
+                        <textarea
+                            name="listing[description]"
+                            class="form-control"
+                            rows="3"
+                            required></textarea>
+
+                        <div class="invalid-feedback">
+                            Please enter a description.
+                        </div>
+                    </div>
+
+                    <!-- Image URL -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Image URL
+                        </label>
+
+                        <input
+                            type="text"
+                            name="listing[image][url]"
+                            class="form-control">
+                    </div>
+
+                    <!-- Price -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Price
+                        </label>
+
+                        <input
+                            type="number"
+                            name="listing[price]"
+                            class="form-control"
+                            required>
+
+                        <div class="invalid-feedback">
+                            Please enter a valid price.
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            name="listing[location]"
+                            class="form-control"
+                            required>
+
+                        <div class="invalid-feedback">
+                            Please enter a location.
+                        </div>
+                    </div>
+
+                    <!-- Country -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Country
+                        </label>
+
+                        <input
+                            type="text"
+                            name="listing[country]"
+                            class="form-control"
+                            required>
+
+                        <div class="invalid-feedback">
+                            Please enter a country.
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary w-100 mt-3">
+                        Submit
+                    </button>
 
                 </form>
-            </div>
 
             </div>
+
         </div>
     </div>
-</body>
+</div>
