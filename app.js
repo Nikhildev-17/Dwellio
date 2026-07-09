@@ -17,6 +17,7 @@ const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
+const { isLoggedIn, isOwner } = require("./routes/middleware.js");
 main();
 
 
@@ -79,7 +80,7 @@ app.get("/listings", wrapAsync(async (req, res) => {
 
 }));
 
-app.get("/listings/new", (req, res) => {
+app.get("/listings/new", isLoggedIn, isOwner, (req, res) => {
     res.render("listings/forms.ejs");
 });
 
@@ -89,28 +90,29 @@ app.get("/listings/:id", wrapAsync(async (req, res) => {
     res.render("listings/show", {listingById});
 }));
 
-app.post("/listings", validateListing, wrapAsync(async (req, res) => {
+app.post("/listings", isLoggedIn, isOwner, validateListing, wrapAsync(async (req, res) => {
 
 
     let newListing = req.body;
     let addNewListing = new Listing(newListing);
+    addNewListing.owner = req.user._id;
     await addNewListing.save();
     res.redirect("/listings");
 }));
 
-app.get("/listings/:id/edit", wrapAsync(async (req, res) => {
+app.get("/listings/:id/edit", isLoggedIn, isOwner, wrapAsync(async (req, res) => {
     let {id} = req.params;
     let oldListing = await Listing.findById(id);
     res.render("listings/edit.ejs", {oldListing});
 }));
 
-app.put("/listings/:id", validateListing, wrapAsync(async (req, res) => {
+app.put("/listings/:id", isLoggedIn, isOwner, validateListing, wrapAsync(async (req, res) => {
     let {id} = req.params;
     await Listing.findByIdAndUpdate(id, req.body);
     res.redirect(`/listings/${id}`);
 }));
 
-app.delete("/listings/:id", wrapAsync(async (req, res) => {
+app.delete("/listings/:id", isLoggedIn, isOwner, wrapAsync(async (req, res) => {
     let {id} = req.params;
     await Listing.findByIdAndDelete(id);
     res.redirect("/listings");

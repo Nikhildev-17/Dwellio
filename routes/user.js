@@ -53,7 +53,7 @@ router.get("/logout", (req, res, next) => {
             return next(err);
         }
 
-        res.redirect("/login");
+        res.redirect("/listings");
     });
 });
 

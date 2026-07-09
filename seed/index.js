@@ -6,16 +6,25 @@ require("dotenv").config({
 
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
+const User = require("../models/user");
 const main = require("../config/dataBaseConfig.js");
 
 const initDataBase = async () => {
+
     await Listing.deleteMany({});
+
+    const user = await User.findOne({ username: "Nikhil" });
+
+    initData.data = initData.data.map((obj) => ({
+        ...obj,
+        owner: user._id,
+    }));
+
     await Listing.insertMany(initData.data);
-    console.log("Data is Initialized");
+
+    console.log("Data Initialized");
 }
 
 main()
     .then(() => initDataBase())
-    .catch((err) => {
-        console.error(err);
-    });
+    .catch(console.log);

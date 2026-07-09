@@ -41,7 +41,9 @@
                     </p>
 
                     <!-- Buttons -->
-                    <div class="mt-4 d-flex gap-3">
+                     <% if(currUser && listingById.owner.equals(currUser._id)){ %>
+                        
+                        <div class="mt-4 d-flex gap-3">
                         <a href="/listings/<%= listingById._id %>/edit" 
                            class="btn btn-outline-dark">
                            Edit
@@ -54,6 +56,10 @@
                             </button>
                         </form>
                     </div>
+                        
+
+                    <% } %>
+                    
 
                 </div>
             </div>

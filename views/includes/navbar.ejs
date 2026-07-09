@@ -1,22 +1,106 @@
-<nav class="navbar navbar-expand-md navbar-light custom-navbar sticky-top shadow-sm">
-  <div class="container">
-    
-    <a class="navbar-brand fw-bold brand-text" href="/">
-      <i class="fa-solid fa-city me-2 brand-icon"></i>
-      StayHub
-    </a>
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+    <div class="container">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <a class="navbar-brand fw-bold text-danger" href="/listings">
+            <i class="fa-solid fa-city me-2"></i>
+            Dwellio
+        </a>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link custom-link" href="/">Home</a>
-        <a class="nav-link custom-link" href="/listings">All Listings</a>
-        <a class="nav-link custom-link" href="/listings/new">Add New Listing</a>
-      </div>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <div class="ms-auto">
+
+                <div class="dropdown">
+
+                    <button
+                        class="btn btn-light rounded-circle border shadow-sm"
+                        style="width:50px;height:50px;;"
+                        data-bs-toggle="dropdown">
+
+                        <% if(currUser){ %>
+
+                            <strong>
+                                <%= currUser.username.charAt(0).toUpperCase() %>
+                            </strong>
+
+                        <% } else { %>
+
+                            <i class="fa-solid fa-user"></i>
+
+                        <% } %>
+
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
+
+                        <% if(currUser){ %>
+
+                            <li>
+                                <h6 class="dropdown-header">
+                                    Welcome,
+                                    <%= currUser.username %> 👋
+                                </h6>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/listings">
+                                    <i class="fa-solid fa-house me-2"></i>
+                                    All Listings
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/listings/new">
+                                    <i class="fa-solid fa-plus me-2"></i>
+                                    Add Listing
+                                </a>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item text-danger" href="/logout">
+                                    <i class="fa-solid fa-right-from-bracket me-2"></i>
+                                    Logout
+                                </a>
+                            </li>
+
+                        <% } else { %>
+
+                            <li>
+                                <a class="dropdown-item" href="/login">
+                                    Login
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/signup">
+                                    Sign Up
+                                </a>
+                            </li>
+
+                        <% } %>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-
-  </div>
 </nav>
